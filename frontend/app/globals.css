@@ -1,0 +1,50 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+main {
+  @apply max-w-screen-xl mx-auto flex flex-col;
+}
+
+header,
+section {
+  @apply px-5 md:px-10;
+}
+
+a {
+  @apply hover:text-primary dark:hover:text-gray-200 transition-colors;
+}
+
+div:focus {
+  @apply outline-none;
+}
+
+@layer utilities {
+  .scrollbar::-webkit-scrollbar {
+    @apply w-2 h-2;
+  }
+
+  .scrollbar::-webkit-scrollbar-track {
+    /* border-radius: 5px; */
+    /* background: #fff; */
+    @apply bg-white dark:bg-black;
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb {
+    /* background: #000; */
+    /* border-radius: 100vh; */
+    /* border: 3px solid #fff; */
+    @apply bg-gray-200 dark:bg-gray-600 border border-white rounded-sm;
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb:hover {
+    /* background: #000; */
+    @apply bg-gray-500;
+  }
+
+  .h-fill-available {
+    /* fixes the h-[100vh] issue on mobile */
+    /* like height: -webkit-fill-available; but for any device (android and iphone) */
+    @apply h-[100vh] supports-[height:100cqh]:h-[100cqh] supports-[height:100svh]:h-[100svh];
+  }
+}

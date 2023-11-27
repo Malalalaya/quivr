@@ -1,0 +1,78 @@
+version: "3"
+
+services:
+  frontend:
+    image: frontend-dev
+    env_file:
+      - ./frontend/.env
+    build:
+      context: frontend
+      dockerfile: Dockerfile.dev
+    volumes:
+      - ./frontend/:/app
+      - /app/node_modules
+      - /app/.next
+    container_name: web
+    restart: unless-stopped
+    ports:
+      - 3000:3000
+
+  backend-core:
+    image: backend-base
+    env_file:
+      - ./backend/.env
+    build:
+      context: backend
+      dockerfile: Dockerfile.dev
+      args:
+        - DEV_MODE=true
+    container_name: backend-core
+    restart: unless-stopped
+    volumes:
+      - ./backend/:/code/
+    depends_on:
+      - redis
+      - worker
+    ports:
+      - 5050:5050
+      - 5678:5678 # debug port
+
+  redis:
+    image: redis:latest
+    container_name: redis
+    restart: unless-stopped
+    ports:
+      - 6379:6379
+
+  worker:
+    image: backend-base
+    env_file:
+      - ./backend/.env
+    build:
+      context: backend
+      dockerfile: Dockerfile.dev
+    container_name: worker
+    command: celery -A celery_worker worker -l info
+    restart: unless-stopped
+    depends_on:
+      - redis
+    volumes:
+      - ./backend/:/code/
+
+  flower:
+    image: backend-base
+    env_file:
+      - ./backend/.env
+    build:
+      context: backend
+      dockerfile: Dockerfile.dev
+    container_name: flower
+    command: celery -A celery_worker flower -l info --port=5555
+    restart: unless-stopped
+    volumes:
+      - ./backend/:/code/
+    depends_on:
+      - redis
+      - worker
+    ports:
+      - 5555:5555

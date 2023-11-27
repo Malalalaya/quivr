@@ -1,0 +1,8 @@
+{
+    "areYouSure": "¿Seguro que quieres cerrar la sesión?",
+    "cancel": "Cancelar",
+    "error": "Error al cerrar sesión {{errorMessage}}",
+    "loggedOut": "Sesión finalizada",
+    "subtitle": "Hasta pronto",
+    "title": "Cerrar sesión"
+}

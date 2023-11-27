@@ -1,0 +1,20 @@
+{
+    "addFiles": "Por favor, agregar archivos a subir",
+    "alreadyAdded": "Ya se agregó {{fileName}} pero no se envió a tu cerebro.",
+    "crawlFailed": "Error al rastrear sitio web: {{message}}",
+    "drop": "Suelte los archivos aquí...",
+    "uploadFailed": "Error al subir archivo: {{message}}",
+    "invalidUrl": "URL inválido",
+    "maxSizeError": "Tamaño de archivo excedido",
+    "missingNecessaryRole": "No tienes el rol necesario para cargar contenido en el cerebro seleccionado. 🧠💡🥲",
+    "ohNo": "¡Oh no!",
+    "selectBrain": "Por favor, seleccione o cree un cerebro antes de subir un archivo",
+    "selectBrainFirst": "Primero debes seleccionar un cerebro. 🧠💡🥲",
+    "subtitle": "Texto, documento, hojas de cálculo, presentación, audio, video y URLs admitidos",
+    "success": "Archivo subido correctamente",
+    "title": "Subir conocimiento",
+    "webSite": "Ingrese la URL del sitio web",
+    "invalidFileType": "Tipo de archivo no permitido",
+    "feed_form_submit_button": "Enviar a mi cerebro",
+    "selected_brain_select_label": "Seleccionar un cerebro"
+}
